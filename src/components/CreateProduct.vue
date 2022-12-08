@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <form>
+    {{ name }} {{ createProduct }}
+    <form class="text-bg-dark p-4 rounded" @submit.prevent="createProduct()">
       <div class="form-group">
         <label for="name">Name</label>
         <input
@@ -8,6 +9,7 @@
           class="form-control"
           id="name"
           placeholder="Product Name"
+          v-model="name"
         />
       </div>
       <div class="form-group">
@@ -19,6 +21,7 @@
           cols="30"
           rows="3"
           placeholder="Product description"
+          v-model="description"
         ></textarea>
       </div>
       <div class="form-group">
@@ -28,19 +31,31 @@
           class="form-control"
           id="price"
           placeholder="Product Price"
+          v-model="price"
         />
       </div>
       <div class="form-group">
         <label for="currency">Currency</label>
-        <select class="form-control" name="currency" id="currency">
-          <option>Rand</option>
-          <option>Naira</option>
-          <option>Ghana</option>
+        <select
+          class="form-control"
+          name="currency"
+          id="currency"
+          v-model="currency"
+        >
+          <option>ZAR</option>
+          <option>NGN</option>
+          <option>GHS</option>
+          <option>USD</option>
         </select>
       </div>
       <div class="form-group">
         <label for="unlimited">Unlimited</label>
-        <select class="form-control" name="unlimited" id="unlimited">
+        <select
+          class="form-control"
+          name="unlimited"
+          id="unlimited"
+          v-model="unlimited"
+        >
           <option>false</option>
           <option>true</option>
         </select>
@@ -51,6 +66,7 @@
           class="form-control"
           type="number"
           placeholder="Product Quantity"
+          v-model="quantity"
         />
       </div>
       <div class="form-group pt-3">
@@ -64,8 +80,51 @@
   </div>
 </template>
 
-<script setup>
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      name: null,
+      description: null,
+      price: null,
+      currency: null,
+      unlimited: null,
+      quantity: null,
+    };
+  },
+  methods: {
+    async createProduct() {
+      try {
+        const config = {
+          headers: {
+            Authorization:
+              "Bearer sk_test_be442dc19bf2d7002b19cd3d8e03486959523281",
+            "content-type": "application/json",
+          },
+        };
+        const response = await axios.post(
+          "https://api.paystack.co/product",
+
+          {
+            name: this.name,
+            description: this.description,
+            price: this.price,
+            currency: this.currency,
+            unlimited: this.unlimited,
+            quantity: this.quantity,
+          },
+          config
+        );
+        console.log(response);
+        return response;
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
 </script>
 
-<style>
+<style scoped>
 </style>
