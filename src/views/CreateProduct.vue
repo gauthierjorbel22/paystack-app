@@ -78,7 +78,7 @@
           <input
             type="submit"
             class="form-control btn btn-success"
-            value="submit"
+            value="Add Product"
           />
         </div>
       </form>
