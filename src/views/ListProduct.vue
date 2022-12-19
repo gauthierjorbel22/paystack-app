@@ -1,28 +1,22 @@
 <template>
   <div class="container">
     <div>
-      <div v-for="data in data" :key="data.id">
-        <div class="card">
-          <p>{{ data.id }}</p>
-          <p>{{ data.name }}</p>
+      <div class="" v-for="data in data" :key="data.id">
+        <div class="card text-bg-light p-5 m-5">
+          <h2>{{ data.name }}</h2>
+          <p>Product ID: {{ data.id }}</p>
           <p>{{ data.description }}</p>
-          <p>{{ data.product_code }}</p>
-          <p>{{ data.currency }}</p>
-          <p>{{ data.price }}</p>
-          <p>{{ data.quantity }}</p>
-          <p v-for="img in data.files" :key="img">
-            <img :src="img.path" alt="" class="w-50" />
-          </p>
+          <p>Product Code: {{ data.product_code }}</p>
+          <p>Price: {{ data.currency }} {{ data.price }}</p>
+          <p>Quantity: {{ data.quantity }}</p>
+          <div class="row">
+            <div v-for="img in data.files" :key="img" class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+              <img :src="img.path" alt="" class="" style="width:200px; height: 200px" />
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- {{ data }} -->
-      <input
-        type="submit"
-        class="btn btn-success"
-        value="Click"
-        @click="listProduct()"
-      />
     </div>
   </div>
 </template>
@@ -67,4 +61,5 @@ export default {
 </script>
 
 <style>
+
 </style>

@@ -1,0 +1,4 @@
+-- We have three main roots in the application:
+* The root "/" where all the product pages are listed
+* The "/create" a page where you can create a product 
+* The "/list" a page to list the products

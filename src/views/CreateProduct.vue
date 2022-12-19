@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
-      <form class="text-bg-dark p-4 rounded" @submit.prevent="createProduct()">
+    <div class="container mt-5">
+      <h1>Create Product</h1>
+      <form class="text-bg-dark p-4 mt-5 rounded" @submit.prevent="createProduct()">
         <div class="form-group">
           <label for="name">Name</label>
           <input
@@ -122,7 +123,11 @@
             config
           );
           console.log(response);
+          this.$router.push('/list');
           return response;
+
+          
+
         } catch (error) {
           console.log(error);
         }
