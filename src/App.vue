@@ -5,13 +5,11 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <header>
     <div class="wrapper">
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink> |
-        <RouterLink to="/about">About</RouterLink> |
-        <RouterLink to="/create">Add Product</RouterLink> |
-        <RouterLink to="/list">List Product</RouterLink> |
-        <RouterLink to="/payment">Pay out</RouterLink>
-      </nav> -->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <RouterLink class="btn" to="/">Home</RouterLink> |
+        <RouterLink class="btn" to="/create">Add Product</RouterLink>|
+        <RouterLink class="btn" to="/list">List Product</RouterLink>
+      </nav>
     </div>
   </header>
 
@@ -19,5 +17,8 @@ import { RouterLink, RouterView } from "vue-router";
 </template>
 
 <style scoped>
-
+.btn:hover {
+  color: white;
+  background-color: rgb(7, 75, 139);
+}
 </style>
